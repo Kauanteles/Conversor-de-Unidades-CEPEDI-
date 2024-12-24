@@ -119,7 +119,42 @@ void calcularVolume() {
         pausarTela();
     }
 }
-
+// Função para converter entre minutos e horas
+void converterTempo() {
+    //Menu da Função
+    int opcao, minutos, horas, minutosRestantes, totalMinutos;
+    limparBuffer();
+    limparTela();
+    printf("Escolha o tipo de conversao:\n");
+    printf("1 - Converter minutos para horas\n");
+    printf("2 - Converter horas para minutos\n");
+    printf("Opcao: ");
+    scanf("%d", &opcao);
+    limparTela();
+   
+    if (opcao == 1) {     // Calculo da conversão de Minutos para Horas
+        printf("Digite o numero de minutos: ");
+        scanf("%d", &minutos);
+        horas = minutos / 60;
+        minutosRestantes = minutos % 60;
+        limparTela();
+        printf("%d minutos equivalem a %d horas e %d minutos.\n", minutos, horas, minutosRestantes);
+        pausarTela();
+    } else if (opcao == 2) {   // Calculo da conversão de Horas para Minutos
+        printf("Digite o numero de horas: ");
+        scanf("%d", &horas);
+        printf("Digite o número de minutos: ");
+        scanf("%d", &minutos);
+        totalMinutos = (horas * 60) + minutos;
+        limparTela();
+        printf("%d horas e %d minutos equivalem a %d minutos.\n", horas, minutos, totalMinutos);
+        pausarTela();
+    } else {
+        limparTela();
+        printf("Opcao invalida.\n");
+        pausarTela();
+    }
+}
 int main() {
     int opcao;
 
@@ -128,6 +163,7 @@ int main() {
         printf("Bem-vindo ao Conversor de Unidades\n\n");
         printf("Escolha uma opcao:\n");
         printf("1 - Converter Volume\n");
+        printf("8 - Converter Horas e Minutos\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
@@ -141,6 +177,9 @@ int main() {
         switch (opcao) {
             case 1:
                 calcularVolume();
+                break;
+            case 8:
+                 converterTempo();
                 break;
             case 10:
                 limparTela();
