@@ -222,6 +222,7 @@ int main() {
         printf("Bem-vindo ao Conversor de Unidades\n\n");
         printf("Escolha uma opcao:\n");
         printf("1 - Converter Volume\n");
+        printf("2 - Conversor de Potência\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
@@ -235,6 +236,9 @@ int main() {
         switch (opcao) {
             case 1:
                 calcularVolume();
+                break;
+            case 2:
+                calcularPotencia();
                 break;
             case 10:
                 limparTela();
