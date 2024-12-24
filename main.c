@@ -120,6 +120,100 @@ void calcularVolume() {
     }
 }
 
+/*
+    Procedimento que faz o calculo e gerencia a interface do conversor de potencia.
+    O procedimento pode fazer a conversão em Watt, KiloWatt, Cavalo-vapor e HorsePower.
+*/
+void calcularPotencia() {
+    double valor, conversoes[] = {735.49875,1.0138696654,1.3410220896};
+    char *siglas [4];
+    siglas[0] = "W";
+    siglas[1] = "CV";
+    siglas[2] = "HP";
+    siglas[3] = "kW";
+    int in, out;
+    int diff, j;
+
+    
+    while(1){
+        limparTela();
+        printf("Conversor de Potência\n\n");
+        printf("Escolha a unidade de entrada:\n");
+        printf("1 - Watt\n");
+        printf("2 - Cavalo-vapor\n");
+        printf("3 - Horsepower\n");
+        printf("4 - KiloWatt\n");
+        printf("5 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &in) != 1 || in < 1 || in > 5) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (in == 5) {
+            return; // Voltar ao menu principal
+        }
+
+        printf("Escolha a unidade de saída:\n");
+        printf("1 - Watt\n");
+        printf("2 - Cavalo-vapor\n");
+        printf("3 - Horsepower\n");
+        printf("4 - KiloWatt\n");
+        printf("5 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &out) != 1 || out < 1 || out > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        // Voltar ao menu principal
+        if (out == 5) {
+            return;
+        }
+
+        printf("Digite o valor a ser convertido (ex: 50.00 ou 50) : ");
+        
+        if (scanf("%lf", &valor) != 1) {
+            limparBuffer();
+            printf("Por favor, insira um valor no formato do exemplo.\n");
+            pausarTela();
+            continue;
+        }
+
+        diff = in - out;
+
+        // decide em qual posição do vetor de conversão vai começar a iteração
+        if(diff < 0) {
+            j = in - 1;
+        }
+        else {
+            j = in - 2;
+        }
+
+        for (int i = 0; i < abs(diff); i++){
+            if(diff > 0) {
+                valor = valor * conversoes[j];
+                j--;
+            }
+            else if (diff < 0){
+                valor = valor / conversoes[j];
+                j++;
+            }
+        }
+        limparBuffer();
+        limparTela();
+        printf("Resultado da conversao: %.4lf %s\n", valor, siglas[out - 1]);
+        pausarTela();
+    }
+}
+
+
 int main() {
     int opcao;
 
