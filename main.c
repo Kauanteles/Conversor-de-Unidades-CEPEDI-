@@ -147,6 +147,7 @@ int main() {
                 printf("Finalizando o conversor...\n");
                 return 0;
             default:
+                limparBuffer();
                 printf("Por favor, escolha uma opcao existente no menu.\n");
                 pausarTela();
         }
