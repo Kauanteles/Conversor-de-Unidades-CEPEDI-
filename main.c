@@ -137,7 +137,7 @@ void calcularPotencia() {
     
     while(1){
         limparTela();
-        printf("Conversor de Potência\n\n");
+        printf("Conversor de Potencia\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - Watt\n");
         printf("2 - Cavalo-vapor\n");
@@ -157,7 +157,9 @@ void calcularPotencia() {
             return; // Voltar ao menu principal
         }
 
-        printf("Escolha a unidade de saída:\n");
+        limparTela();
+        printf("Conversor de Potencia\n\n");
+        printf("Escolha a unidade de saida:\n");
         printf("1 - Watt\n");
         printf("2 - Cavalo-vapor\n");
         printf("3 - Horsepower\n");
@@ -165,7 +167,7 @@ void calcularPotencia() {
         printf("5 - Voltar ao menu principal\n");
         printf("\nDigite a opcao: ");
 
-        if (scanf("%d", &out) != 1 || out < 1 || out > 4) {
+        if (scanf("%d", &out) != 1 || out < 1 || out > 5) {
             limparBuffer();
             printf("Por favor, escolha uma opcao existente no menu.\n");
             pausarTela();
@@ -222,7 +224,7 @@ int main() {
         printf("Bem-vindo ao Conversor de Unidades\n\n");
         printf("Escolha uma opcao:\n");
         printf("1 - Converter Volume\n");
-        printf("2 - Conversor de Potência\n");
+        printf("2 - Conversor de Potencia\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
