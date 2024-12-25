@@ -215,6 +215,94 @@ void calcularPotencia() {
     }
 }
 
+// Funcao para realizar os calculos e gerenciar a interface do conversor de temperatura
+void calcularTemperatura() {
+    double valor, resultado;
+    char *siglas[] = {"C", "F", "K"};
+    int in, out;
+
+    while (1) {
+        limparTela();
+        printf("Conversor de Temperatura\n\n");
+        printf("Escolha a unidade de entrada:\n");
+        printf("1 - Celsius (C)\n");
+        printf("2 - Fahrenheit (F)\n");
+        printf("3 - Kelvin (K)\n");
+        printf("4 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &in) != 1 || in < 1 || in > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (in == 4) {
+            return; // Voltar ao menu principal
+        }
+
+        limparTela();
+        printf("Conversor de Temperatura\n\n");
+        printf("Escolha a unidade de saida:\n");
+        printf("1 - Celsius (C)\n");
+        printf("2 - Fahrenheit (F)\n");
+        printf("3 - Kelvin (K)\n");
+        printf("4 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &out) != 1 || out < 1 || out > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (out == 4) {
+            return; // Voltar ao menu principal
+        }
+
+        printf("Digite o valor a ser convertido (ex: 25.00 ou 25): ");
+
+        if (scanf("%lf", &valor) != 1) {
+            limparBuffer();
+            printf("Por favor, insira um valor no formato do exemplo.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (in == 1) { // Celsius
+            if (out == 2) {
+                resultado = (valor * 9.0 / 5.0) + 32.0; // Celsius para Fahrenheit
+            } else if (out == 3) {
+                resultado = valor + 273.15; // Celsius para Kelvin
+            } else {
+                resultado = valor; // Celsius para Celsius
+            }
+        } else if (in == 2) { // Fahrenheit
+            if (out == 1) {
+                resultado = (valor - 32.0) * 5.0 / 9.0; // Fahrenheit para Celsius
+            } else if (out == 3) {
+                resultado = (valor - 32.0) * 5.0 / 9.0 + 273.15; // Fahrenheit para Kelvin
+            } else {
+                resultado = valor; // Fahrenheit para Fahrenheit
+            }
+        } else if (in == 3) { // Kelvin
+            if (out == 1) {
+                resultado = valor - 273.15; // Kelvin para Celsius
+            } else if (out == 2) {
+                resultado = (valor - 273.15) * 9.0 / 5.0 + 32.0; // Kelvin para Fahrenheit
+            } else {
+                resultado = valor; // Kelvin para Kelvin
+            }
+        }
+
+        limparBuffer();
+        limparTela();
+        printf("Resultado da conversao: %.2lf %s\n", resultado, siglas[out - 1]);
+        pausarTela();
+    }
+}
 
 int main() {
     int opcao;
@@ -225,6 +313,7 @@ int main() {
         printf("Escolha uma opcao:\n");
         printf("1 - Converter Volume\n");
         printf("2 - Conversor de Potencia\n");
+        printf("3 - Conversor de Temperatura\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
@@ -241,6 +330,9 @@ int main() {
                 break;
             case 2:
                 calcularPotencia();
+                break;
+            case 3:
+                calcularTemperatura();
                 break;
             case 10:
                 limparTela();
