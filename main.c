@@ -49,8 +49,9 @@ void calcularVolume() {
             continue;
         }
 
+        // Voltar ao menu principal
         if (entradaUnidade == 4) {
-            return; // Voltar ao menu principal
+            return;
         }
 
         limparTela();
@@ -74,7 +75,6 @@ void calcularVolume() {
             return;
         }
 
-        limparTela();
         printf("Digite o valor a ser convertido (ex: 50.00 ou 50) : ");
         
         if (scanf("%f", &valor) != 1) {
@@ -94,24 +94,46 @@ void calcularVolume() {
         }
 
         // Realiza o calculo com base nas unidades
-        if (entradaUnidade == 1) { // Litros
-            if (saidaUnidade == 2) {
-                resultado = valor * 1000; // Litros -> Mililitros
-            } else if (saidaUnidade == 3) {
-                resultado = valor / 1000; // Litros -> Metros Cubicos
-            }
-        } else if (entradaUnidade == 2) { // Mililitros
-            if (saidaUnidade == 1) {
-                resultado = valor / 1000; // Mililitros -> Litros
-            } else if (saidaUnidade == 3) {
-                resultado = valor / 1000000; // Mililitros -> Metros Cubicos
-            }
-        } else if (entradaUnidade == 3) { // Metros Cubicos
-            if (saidaUnidade == 1) {
-                resultado = valor * 1000; // Metros Cubicos -> Litros
-            } else if (saidaUnidade == 2) {
-                resultado = valor * 1000000; // Metros Cubicos -> Mililitros
-            }
+        switch (entradaUnidade) {
+            case 1:
+                switch (saidaUnidade) {
+                    case 1:
+                        resultado = valor; // Litros -> Litros
+                        break;
+                    case 2:
+                        resultado = valor * 1000; // Litros -> Mililitros
+                        break;
+                    case 3:
+                        resultado = valor / 1000; // Litros -> Metros Cubicos
+                        break;
+                }
+                break;
+            case 2:
+                switch (saidaUnidade) {
+                    case 1:
+                        resultado = valor / 1000; // Mililitros -> Litros
+                        break;
+                    case 2:
+                        resultado = valor; // Mililitros -> Mililitros
+                        break;
+                    case 3:
+                        resultado = valor / 1000000; // Mililitros -> Metros Cubicos
+                        break;
+                }
+                break;
+            case 3:
+                switch (saidaUnidade) {
+                    case 1:
+                        resultado = valor * 1000; // Metros Cubicos -> Litros
+                        break;
+                    case 2:
+                        resultado = valor * 1000000; // Metros Cubicos -> Mililitros
+                        break;
+                    case 3:
+                        resultado = valor; // Metros Cubicos -> Metros Cubicos
+                        break;
+                }
+                break;
         }
 
         limparTela();
@@ -262,7 +284,7 @@ void calcularTemperatura() {
             return; // Voltar ao menu principal
         }
 
-        printf("Digite o valor a ser convertido (ex: 25.00 ou 25): ");
+        printf("Digite o valor a ser convertido (ex: 50.00 ou 50): ");
 
         if (scanf("%lf", &valor) != 1) {
             limparBuffer();
@@ -311,7 +333,7 @@ void calcularArea() {
 
     while (1) {
         limparTela();
-        printf("Conversor de unidade de area\n\n\n");
+        printf("Conversor de unidade de area\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - metros quadrados\n");
         printf("2 - centimetros quadrados\n");
@@ -348,7 +370,7 @@ void calcularArea() {
             return;
         }
 
-        limparTela();
+
         printf("Digite o valor a ser convertido (ex: 50.00 ou 50) : ");
         
         if (scanf("%f", &valor) != 1) {
