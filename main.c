@@ -606,6 +606,95 @@ void converterTempo() {
         pausarTela();
     }  
 }
+
+void convetercomprimento(){
+    int entrada,saida;
+    float resultado,valor;
+    char *siglaSaida;
+    
+     while (1) {
+        limparTela();
+        printf("Conversor de medidas \n\n");
+        printf("Escolha a unidade de entrada:\n");
+        printf("1 - metro \n");
+        printf("2 - centimetro\n");
+        printf("3 - milimetro\n");
+        printf("4 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao:");
+       
+        if (scanf("%d", &entrada) != 1 || entrada < 1 || entrada > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+       
+        if(entrada==4) { return; }
+
+        limparTela();
+        printf("Conversor de comprimento\n\n");
+        printf("Escolha a unidade de saida:\n");
+        printf("1 - metros\n");
+        printf("2 - centimetros\n");
+        printf("3 - milimetro\n");
+        printf("4 - Voltar ao menu principal");
+        printf("\nDigite a opcao: ");
+        
+        if (scanf("%d", &saida) != 1 || saida < 1 || saida > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+        
+        if (saida==4){ return; }
+        
+        limparTela();
+        printf("Digite o valor a ser convertido (ex: 10.00 ou 10) : ");
+        
+        if (scanf("%f", &valor) != 1) {
+            limparBuffer();
+            printf("Por favor, insira um valor no formato do exemplo.\n");
+            pausarTela();
+            continue;
+        }
+
+        // Define a sigla da unidade de saída
+        if (saida== 1) {
+            siglaSaida = "mt";
+        } else if (saida == 2) {
+            siglaSaida = "cm";
+        } else if (saida== 3) {
+            siglaSaida = "mm";
+        }
+         
+        // Realiza o calculo com base nas unidades
+        if (entrada == 1) { // Metros
+            if (saida == 2) {
+                resultado = valor * 100; // Metros-> Centimetros 
+            } else if (saida == 3) {
+                resultado = valor * 1000; // Metros -> Milimetros 
+            }
+        } else if (entrada== 2) { // Centimetros
+            if (saida == 1) {
+                resultado = valor / 100; // Centimetros -> Metros
+            } else if (saida == 3) {
+                resultado = valor * 10 ; // Centimetros -> Milimetros
+            }
+        } else if (entrada == 3) { // Milimetros
+            if (saida == 1) {
+                resultado = valor / 1000; // Milimetros -> Metros
+            } else if (saida == 2) {
+                resultado = valor / 10; // Milimetros-> centimentros
+            }
+        }
+
+        limparTela();
+        printf("Resultado da conversao: %.2f %s\n", resultado, siglaSaida);
+        pausarTela();
+    }
+}
+
 int main() {
     int opcao;
 
@@ -619,6 +708,7 @@ int main() {
         printf("4 - Conversor de unidade de area\n");
         printf("5 - Conversor de Armazenamento de Dados\n");
         printf("6 - Conversor de Unidade de Tempo\n");
+        printf("7 - Conversor de Unidade de Comprimento\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
@@ -647,6 +737,9 @@ int main() {
                 break;
             case 6:
                  converterTempo();
+                 break;
+            case 7:
+                 convetercomprimento();
                  break;
             case 10:
                 limparTela();
