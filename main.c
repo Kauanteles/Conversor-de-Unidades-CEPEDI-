@@ -519,6 +519,93 @@ void calcularArmazenamento()
     }
 }
 
+void converterTempo() {
+    double valor, resultado;
+    char *siglas[] = {"s", "min", "h"};
+    int in, out;
+
+    while (1) {
+        limparTela();
+        printf("Conversor de Unidade de Tempo\n");
+        printf("Escolha a unidade de entrada:\n");
+        printf("1 - Segundos (s)\n");
+        printf("2 - Minutos (min)\n");
+        printf("3 - Horas (h)\n");
+        printf("4 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &in) != 1 || in < 1 || in > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (in == 4) {
+            return; // Voltar ao menu principal
+        }
+
+        limparTela();
+        printf("Conversor de Unidade de Tempo\n\n");
+        printf("Escolha a unidade de saida:\n");
+        printf("1 - Segundos (s)\n");
+        printf("2 - Minutos (min)\n");
+        printf("3 - Horas (h)\n");
+        printf("4 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &out) != 1 || out < 1 || out > 4) {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (out == 4) {
+            return; // Voltar ao menu principal
+        }
+
+        printf("Digite o valor a ser convertido (ex: 50.00 ou 50): ");
+
+        if (scanf("%lf", &valor) != 1) {
+            limparBuffer();
+            printf("Por favor, insira um valor no formato do exemplo.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (in == 1) { // Segundos
+            if (out == 2) { // Segundos para Minutos
+                resultado = valor / 60; 
+            } else if (out == 3) {
+                resultado = valor / 3600;  // Segundo para horas
+            } else {
+                resultado = valor; // Segundo para Segundo
+            }
+        } else if (in == 2) { // Minutos
+            if (out == 1) {
+                resultado = valor * 60 ; // Minutos para segundos
+            } else if (out == 3) {
+                resultado = valor/60 ; // Minutos para Horas
+            } else {
+                resultado = valor; // Minutos para Minutos
+            }
+        } else if (in == 3) { // Horas
+            if (out == 1) {
+                resultado = valor * 3600; // Horas para Segundos
+            } else if (out == 2) {
+                resultado = valor * 60; // Horas para Minutos
+            } else {
+                resultado = valor; // Horas para Horas
+            }
+        }
+
+        limparBuffer();
+        limparTela();
+        printf("Resultado da conversao: %.2lf %s\n", resultado, siglas[out - 1]);
+        pausarTela();
+    }  
+}
 int main() {
     int opcao;
 
@@ -531,6 +618,7 @@ int main() {
         printf("3 - Conversor de Temperatura\n");
         printf("4 - Conversor de unidade de area\n");
         printf("5 - Conversor de Armazenamento de Dados\n");
+        printf("6 - Conversor de Unidade de Tempo\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
@@ -557,6 +645,9 @@ int main() {
             case 5:
                 calcularArmazenamento();
                 break;
+            case 6:
+                 converterTempo();
+                 break;
             case 10:
                 limparTela();
                 printf("Finalizando o conversor...\n");
@@ -569,4 +660,4 @@ int main() {
     }
 
     return 0;
-}
+    }
