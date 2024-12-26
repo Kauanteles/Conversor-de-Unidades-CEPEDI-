@@ -386,6 +386,117 @@ void calcularArea() {
     }
 }
 
+// Função que calcula e gerencia a interface do conversor de armazenamento de dados
+void calcularArmazenamento()
+{
+    double valor;
+    char *siglas[6];
+    siglas[0] = "b";
+    siglas[1] = "B";
+    siglas[2] = "KB";
+    siglas[3] = "MB";
+    siglas[4] = "GB";
+    siglas[5] = "TB";
+    int in, out, diff;
+
+    while (1)
+    {
+        limparTela();
+        printf("Conversor de Armazenamento de Dados\n\n");
+        printf("Escolha a unidade de entrada:\n");
+        printf("1 - Bit\n");
+        printf("2 - Byte\n");
+        printf("3 - Kilobyte\n");
+        printf("4 - Megabyte\n");
+        printf("5 - Gigabyte\n");
+        printf("6 - Terabyte\n");
+        printf("7 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &in) != 1 || in < 1 || in > 7)
+        {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        if (in == 7)
+        {
+            return; // Voltar ao menu principal
+        }
+
+        limparTela();
+        printf("Conversor de Armazenamento de Dados\n\n");
+        printf("Escolha a unidade de saida:\n");
+        printf("1 - Bit\n");
+        printf("2 - Byte\n");
+        printf("3 - Kilobyte\n");
+        printf("4 - Megabyte\n");
+        printf("5 - Gigabyte\n");
+        printf("6 - Terabyte\n");
+        printf("7 - Voltar ao menu principal\n");
+        printf("\nDigite a opcao: ");
+
+        if (scanf("%d", &out) != 1 || out < 1 || out > 7)
+        {
+            limparBuffer();
+            printf("Por favor, escolha uma opcao existente no menu.\n");
+            pausarTela();
+            continue;
+        }
+
+        // Voltar ao menu principal
+        if (out == 7)
+        {
+            return;
+        }
+
+        printf("Digite o valor a ser convertido (ex: 50.00 ou 50) : ");
+
+        if (scanf("%lf", &valor) != 1)
+        {
+            limparBuffer();
+            printf("Por favor, insira um valor no formato do exemplo.\n");
+            pausarTela();
+            continue;
+        }
+
+        diff = in - out;
+
+        for (int i = 0; i < abs(diff); i++)
+        {
+            if (diff > 0)
+            {
+                if (out == 1 && i == abs(diff) - 1)
+                {
+                    valor = valor * 8;
+                }
+                else
+                {
+                    valor = valor * 1024;
+                }
+            }
+            else if (diff < 0)
+            {
+                if (in == 1 && i == 0)
+                {
+                    valor = valor / 8;
+                }
+                else
+                {
+                    valor = valor / 1024;
+                }
+            }
+        }
+
+        limparBuffer();
+        limparTela();
+        printf("Resultado da conversao: %.4lf %s\n", valor, siglas[out - 1]);
+        pausarTela();
+    }
+}
+
 int main() {
     int opcao;
 
@@ -397,6 +508,7 @@ int main() {
         printf("2 - Conversor de Potencia\n");
         printf("3 - Conversor de Temperatura\n");
         printf("4 - Conversor de unidade de area\n");
+        printf("5 - Conversor de Armazenamento de Dados\n");
         printf("10 - Sair\n");
         printf("\nDigite a opcao: ");
         
@@ -419,6 +531,9 @@ int main() {
                 break;
             case 4:
                 calcularArea();
+                break;
+            case 5:
+                calcularArmazenamento();
                 break;
             case 10:
                 limparTela();
