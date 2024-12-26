@@ -333,7 +333,7 @@ void calcularArea() {
 
     while (1) {
         limparTela();
-        printf("Conversor de unidade de area\n\n");
+        printf("Conversor de Area\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - metros quadrados\n");
         printf("2 - centimetros quadrados\n");
@@ -352,7 +352,7 @@ void calcularArea() {
         }
 
         limparTela();
-        printf("Conversor de unidade de area\n\n");
+        printf("Conversor de Area\n\n");
         printf("Escolha a unidade de saida:\n");
         printf("1 - metros quadrados\n");
         printf("2 - centimetros quadrados\n");
@@ -424,7 +424,7 @@ void calcularArmazenamento()
     while (1)
     {
         limparTela();
-        printf("Conversor de Armazenamento de Dados\n\n");
+        printf("Conversor de Armazenamento\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - Bit\n");
         printf("2 - Byte\n");
@@ -449,7 +449,7 @@ void calcularArmazenamento()
         }
 
         limparTela();
-        printf("Conversor de Armazenamento de Dados\n\n");
+        printf("Conversor de Armazenamento\n\n");
         printf("Escolha a unidade de saida:\n");
         printf("1 - Bit\n");
         printf("2 - Byte\n");
@@ -526,7 +526,7 @@ void converterTempo() {
 
     while (1) {
         limparTela();
-        printf("Conversor de Unidade de Tempo\n\n");
+        printf("Conversor de Tempo\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - Segundos (s)\n");
         printf("2 - Minutos (min)\n");
@@ -546,7 +546,7 @@ void converterTempo() {
         }
 
         limparTela();
-        printf("Conversor de Unidade de Tempo\n\n");
+        printf("Conversor de Tempo\n\n");
         printf("Escolha a unidade de saida:\n");
         printf("1 - Segundos (s)\n");
         printf("2 - Minutos (min)\n");
@@ -614,13 +614,13 @@ void convetercomprimento(){
     
      while (1) {
         limparTela();
-        printf("Conversor de medidas \n\n");
+        printf("Conversor de comprimento\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - metro \n");
         printf("2 - centimetro\n");
         printf("3 - milimetro\n");
         printf("4 - Voltar ao menu principal\n");
-        printf("\nDigite a opcao:");
+        printf("\nDigite a opcao: ");
        
         if (scanf("%d", &entrada) != 1 || entrada < 1 || entrada > 4) {
             limparBuffer();
@@ -634,10 +634,10 @@ void convetercomprimento(){
         limparTela();
         printf("Conversor de comprimento\n\n");
         printf("Escolha a unidade de saida:\n");
-        printf("1 - metros\n");
-        printf("2 - centimetros\n");
+        printf("1 - metro\n");
+        printf("2 - centimetro\n");
         printf("3 - milimetro\n");
-        printf("4 - Voltar ao menu principal");
+        printf("4 - Voltar ao menu principal\n");
         printf("\nDigite a opcao: ");
         
         if (scanf("%d", &saida) != 1 || saida < 1 || saida > 4) {
@@ -649,8 +649,7 @@ void convetercomprimento(){
         
         if (saida==4){ return; }
         
-        limparTela();
-        printf("Digite o valor a ser convertido (ex: 10.00 ou 10) : ");
+        printf("Digite o valor a ser convertido (ex: 50.00 ou 50) : ");
         
         if (scanf("%f", &valor) != 1) {
             limparBuffer();
@@ -661,7 +660,7 @@ void convetercomprimento(){
 
         // Define a sigla da unidade de saída
         if (saida== 1) {
-            siglaSaida = "mt";
+            siglaSaida = "m";
         } else if (saida == 2) {
             siglaSaida = "cm";
         } else if (saida== 3) {
@@ -702,14 +701,14 @@ int main() {
         limparTela();
         printf("Bem-vindo ao Conversor de Unidades\n\n");
         printf("Escolha uma opcao:\n");
-        printf("1 - Converter Volume\n");
+        printf("1 - Conversor de Volume\n");
         printf("2 - Conversor de Potencia\n");
         printf("3 - Conversor de Temperatura\n");
-        printf("4 - Conversor de unidade de area\n");
-        printf("5 - Conversor de Armazenamento de Dados\n");
-        printf("6 - Conversor de Unidade de Tempo\n");
-        printf("7 - Conversor de Unidade de Comprimento\n");
-        printf("10 - Sair\n");
+        printf("4 - Conversor de Area\n");
+        printf("5 - Conversor de Armazenamento\n");
+        printf("6 - Conversor de Tempo\n");
+        printf("7 - Conversor de Comprimento\n");
+        printf("8 - Sair\n");
         printf("\nDigite a opcao: ");
         
         if (scanf("%d", &opcao) != 1) {
@@ -741,7 +740,7 @@ int main() {
             case 7:
                  convetercomprimento();
                  break;
-            case 10:
+            case 8:
                 limparTela();
                 printf("Finalizando o conversor...\n");
                 return 0;
