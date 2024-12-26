@@ -526,7 +526,7 @@ void converterTempo() {
 
     while (1) {
         limparTela();
-        printf("Conversor de Unidade de Tempo\n");
+        printf("Conversor de Unidade de Tempo\n\n");
         printf("Escolha a unidade de entrada:\n");
         printf("1 - Segundos (s)\n");
         printf("2 - Minutos (min)\n");
@@ -660,4 +660,4 @@ int main() {
     }
 
     return 0;
-    }
+}
