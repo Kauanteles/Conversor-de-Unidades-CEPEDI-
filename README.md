@@ -24,14 +24,14 @@ git clone https://github.com/Kauanteles/Conversor-de-Unidades-CEPEDI-.git
 
 ## Como Funciona
 
-1. Ao executar o programa, você verá um menu com opções para converter volumes entre unidades.
-2. Escolha a unidade de entrada (Litros, Mililitros ou Metros Cúbicos) e a unidade de saída.
+1. Ao executar o programa, você verá um menu com opções para escolher qual conversor de unidade você deseja usar.
+2. Escolha a unidade de entrada (ex: Litros) e a unidade de saída (ex: mililitros).
 3. Insira o valor a ser convertido e o programa exibirá o resultado.
 4. Você pode realizar várias conversões até escolher a opção para sair.
 
 ## Contribuindo
 
-Se você quiser contribuir para o projeto, basta seguir os seguintes passos:
+Se você quiser contribuir para o projeto, basta seguir os seguintes passos (esses passos devem ocorrer após a clonagem e ja estando no diretorio do projeto descritos em "como Rodar o Projeto"):
 
 1. Crie uma branch para a sua feature:
 
@@ -40,6 +40,7 @@ Se você quiser contribuir para o projeto, basta seguir os seguintes passos:
 2. Após realizar modificações no código em sua ide:
 
     git add .
+
     git commit -m "Descrição das alterações"
 
 3. Envie a branch para o GitHub:
