@@ -390,7 +390,7 @@ void calcularArea() {
 void calcularArmazenamento()
 {
     double valor;
-    char *siglas[5];
+    char *siglas[6];
     siglas[0] = "b";
     siglas[1] = "B";
     siglas[2] = "KB";
